@@ -15,12 +15,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="40dp"
-            android:id="@+id/back_main" />
+            android:id="@+id/back_main"
+            android:background="@drawable/arrow"/>
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/titleconfirm"
             android:text="确认订单"
@@ -101,7 +104,7 @@
                 android:src="@drawable/task"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/getTime" />
         </LinearLayout>
@@ -121,7 +124,7 @@
                 android:layout_gravity="center"/>
 
             <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/userEdit"
                 android:hint="联系人"/>
@@ -141,13 +144,14 @@
                 android:layout_gravity="center"/>
 
             <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/userphone"
                 android:hint="联系电话"/>
         </LinearLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -159,6 +163,7 @@
             android:id="@+id/price"
             android:layout_weight="1"
             android:text="价格"
+            android:textColor="@color/black"
             android:gravity="center"/>
 
         <Button
@@ -167,6 +172,8 @@
             android:layout_gravity="bottom"
             android:id="@+id/next"
             android:layout_weight="1"
-            android:text="下一步"/>
+            android:text="确定"
+            android:textColor="@color/black"
+            android:background="@color/white"/>
     </LinearLayout>
 </LinearLayout>

@@ -81,7 +81,7 @@
             android:id="@+id/mian_start"
             android:text="起点："/>
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/main_startedit"
             android:hint="输入货物出发地"/>
@@ -97,7 +97,7 @@
             android:id="@+id/mian_final"
             android:text="终点："/>
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/main_finaledit"
             android:hint="输入货物目的地"/>
@@ -122,6 +122,7 @@
             android:layout_gravity="bottom"
             android:id="@+id/mian_yuyue"
             android:layout_weight="1"
-            android:text="预约"/>
+            android:text="预约"
+            android:background="@color/red"/>
     </LinearLayout>
 </LinearLayout>

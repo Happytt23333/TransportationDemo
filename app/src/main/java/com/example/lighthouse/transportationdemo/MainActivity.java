@@ -18,6 +18,12 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText startedit;
     private EditText endedit;
+
+    private Button user;
+    private Button notifigation;
+    private Button likeuse;
+
+    public String price = "0";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +35,27 @@ public class MainActivity extends AppCompatActivity {
 
         car = (ImageView)findViewById(R.id.cariamge);
         usecar = (Button)findViewById(R.id.main_like);
+
+        user = (Button)findViewById(R.id.main_me);
+        notifigation = (Button)findViewById(R.id.main_info);
+        likeuse = (Button)findViewById(R.id.main_like);
+
+        startedit = (EditText)findViewById(R.id.main_startedit);
+        endedit = (EditText)findViewById(R.id.main_finaledit);
+
+        user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,UserActivity.class);
+                startActivity(intent);
+            }
+        });
         small.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 small.getResources().getColor(R.color.colorPrimary);
                 car.setImageResource(R.drawable.smallcar);
+                price = "80";
                 middle.getResources().getColor(R.color.white);
                 big.getResources().getColor(R.color.white);
             }
@@ -44,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 middle.getResources().getColor(R.color.colorPrimary);
                 car.setImageResource(R.drawable.middlecar);
+                price = "120";
                 small.getResources().getColor(R.color.white);
                 big.getResources().getColor(R.color.white);
             }
@@ -54,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                big.getResources().getColor(R.color.colorPrimary);
                 car.setImageResource(R.drawable.bigcar);
+                price = "200";
                 small.getResources().getColor(R.color.white);
                 middle.getResources().getColor(R.color.white);
             }
@@ -63,6 +87,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,ConfirmActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        likeuse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ConfirmActivity.class);
+                String start = startedit.getText().toString();
+                String end = endedit.getText().toString();
+                intent.putExtra("start_data",start);
+                intent.putExtra("end_data",end);
+                intent.putExtra("price",price);
                 startActivity(intent);
             }
         });
