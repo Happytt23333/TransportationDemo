@@ -17,7 +17,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText nameEdit;
     private EditText passwordEdit;
     private Button login;
-    private CheckBox driverCheck;
     private CheckBox masterCheck;
     private CheckBox remember;
 
@@ -29,7 +28,6 @@ public class LoginActivity extends AppCompatActivity {
         pref = PreferenceManager.getDefaultSharedPreferences(this);
         nameEdit = (EditText)findViewById(R.id.nameEdit);
         passwordEdit = (EditText)findViewById(R.id.passwordEdit);
-        driverCheck = (CheckBox)findViewById(R.id.driverCheck);
         masterCheck = (CheckBox)findViewById(R.id.masterCheck);
         remember = (CheckBox)findViewById(R.id.remember);
 
@@ -47,12 +45,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String name = nameEdit.getText().toString();
                 String password = passwordEdit.getText().toString();
-                Boolean driver = driverCheck.isChecked();
                 Boolean master = masterCheck.isChecked();
 
                 if(name.equals("zhangsan") && password.equals("abcdefg")){
                     editor = pref.edit();
-                    if(driver && (!master)){
+                    if(master){
                         if(remember.isChecked()){
                             editor.putBoolean("remember",true);
                             editor.putString("name",name);
@@ -61,32 +58,11 @@ public class LoginActivity extends AppCompatActivity {
                             editor.clear();
                         }
                         editor.apply();
-//                        Intent intent = new Intent(LoginActivity.this,DriversActivity.class);
-//                        startActivity(intent);
-//                        finish();
+                        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                        startActivity(intent);
+                        finish();
                     }else{
-                        Toast.makeText(LoginActivity.this," Only Select the CheckBox of Drivers",Toast.LENGTH_LONG).show();
-                    }
-                }else {
-                    Toast.makeText(LoginActivity.this,"Name or password is invalid",Toast.LENGTH_LONG).show();
-                }
-
-                if(name.equals("lisi") && password.equals("abcdefg")){
-                    editor = pref.edit();
-                    if((!driver) && master){
-                        if(remember.isChecked()){
-                            editor.putBoolean("remember",true);
-                            editor.putString("name",name);
-                            editor.putString("password",password);
-                        }else {
-                            editor.clear();
-                        }
-                        editor.apply();
-//                        Intent intent = new Intent(LoginActivity.this,MasterActivity.class);
-//                        startActivity(intent);
-//                        finish();
-                    }else{
-                        Toast.makeText(LoginActivity.this," Only Select the CheckBox of Masters",Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this,"  Select the CheckBox of Master",Toast.LENGTH_LONG).show();
                     }
                 }else {
                     Toast.makeText(LoginActivity.this,"Name or password is invalid",Toast.LENGTH_LONG).show();

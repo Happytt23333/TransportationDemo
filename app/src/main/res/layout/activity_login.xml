@@ -64,15 +64,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:orientation="horizontal">
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/driverCheck"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Drivers"
-            android:id="@+id/driver"/>
 
         <CheckBox
             android:layout_width="wrap_content"
@@ -96,11 +87,14 @@
     </LinearLayout>
 
     <Button
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/login"
         android:layout_marginTop="40dp"
-        android:text="Login"/>
+        android:text="Login"
+        android:background="#CCFFFF"/>
 
 
 </LinearLayout>
