@@ -30,4 +30,17 @@
             android:gravity="center"
             android:textColor="@color/black"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/notice_first"
+            android:text="我的第一条消息"
+            android:gravity="center"
+            android:textColor="@color/black"/>
+    </LinearLayout>
 </LinearLayout>

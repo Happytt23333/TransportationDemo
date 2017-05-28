@@ -61,7 +61,7 @@ public class TaskActivity extends AppCompatActivity {
         task_number.setText(intent.getStringExtra("TaskNumber"));
         task_start.setText(intent.getStringExtra("start_data2"));
         task_end.setText(intent.getStringExtra("end_data2"));
-        task_master.setText("Master");
+        task_master.setText(intent.getStringExtra("Master"));
 
         final String a = task_time.getText().toString();
         final String b = task_number.getText().toString();
@@ -124,7 +124,6 @@ public class TaskActivity extends AppCompatActivity {
 //                    db.insert("taskcancel",null,values);
 //                    values.clear();
 //                }
-
                 Intent intent = new Intent("com.example.lighthouse.TASK_FINISHED");
                 sendBroadcast(intent);
             }
