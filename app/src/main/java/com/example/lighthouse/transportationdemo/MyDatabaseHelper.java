@@ -11,21 +11,21 @@ import android.widget.Toast;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
     public static final String CREATE_TASK = "create table tasking("
-            + "id text primary key autoincrement,"
+            + "id INTEGER primary key autoincrement,"
             +"time text,"
             +"tasknumber,text"
             + "taskstart text,"
             +"taskend text,"
             +"taskmaster text)";
     public static final String CREATE_FINISH = "create table taskfinished("
-            + "id text primary key autoincrement,"
+            + "id INTEGER  primary key autoincrement,"
             +"time text,"
             +"tasknumber,text"
             + "taskstart text,"
             +"taskend text,"
             +"taskmaster text)";
     public static final String CREATE_CANCEl = "create table taskcanceled("
-            + "id text primary key autoincrement,"
+            + "id INTEGER  primary key autoincrement,"
             +"time text,"
             +"tasknumber,text"
             + "taskstart text,"

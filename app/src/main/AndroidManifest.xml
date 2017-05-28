@@ -22,6 +22,8 @@
         <activity android:name=".ConfirmActivity" />
         <activity android:name=".UserActivity" />
         <activity android:name=".TaskActivity" />
+        <activity android:name=".DriversActivity" />
+        <activity android:name=".NoticeActivity"></activity>
     </application>
 
 </manifest>

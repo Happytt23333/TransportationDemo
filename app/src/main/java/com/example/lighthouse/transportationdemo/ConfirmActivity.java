@@ -7,9 +7,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Calendar;
 
 public class ConfirmActivity extends AppCompatActivity {
@@ -24,6 +31,8 @@ public class ConfirmActivity extends AppCompatActivity {
     private int i = 1512180300;
 
     private MyDatabaseHelper dbHelper;
+    private CheckBox checkDriver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +55,26 @@ public class ConfirmActivity extends AppCompatActivity {
         phoneConfirm = (EditText)findViewById(R.id.userphone);
         final String user  = userConfirm.getText().toString()+"("+phoneConfirm.getText().toString()+")";
 
+        checkDriver = (CheckBox)findViewById(R.id.checkDriver);
+        checkDriver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Boolean checked = checkDriver.isChecked();
+                String driver = load();
+                if(checked){
+                    if(driver.equals("")){
+                        Toast.makeText(ConfirmActivity.this,"Setting your driver",Toast.LENGTH_SHORT).show();
+                        checkDriver.setChecked(false);
+                    }
+                }
+
+            }
+        });
         confirm = (Button)findViewById(R.id.next);
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(ConfirmActivity.this,"Clicked the button",Toast.LENGTH_SHORT).show();
                 dbHelper.getWritableDatabase();
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
                 ContentValues values = new ContentValues();
@@ -57,7 +82,7 @@ public class ConfirmActivity extends AppCompatActivity {
                 values.put("time",getTime());
                 values.put("tasknumber",""+i);
                 values.put("taskstart",confirm_start);
-                values.put("startend",confirm_end);
+                values.put("taskend",confirm_end);
                 values.put("taskmaster",user);
                 db.insert("tasking",null,values);
                 values.clear();
@@ -83,5 +108,31 @@ public class ConfirmActivity extends AppCompatActivity {
         month = c.get(Calendar.MONTH)+1;
         day = c.get(Calendar.DAY_OF_MONTH);
         return year+"年"+month+"月"+day+"日";
+    }
+
+    public String load(){
+        FileInputStream in = null;
+        BufferedReader reader = null;
+        StringBuilder content = new StringBuilder();
+
+        try{
+            in = openFileInput("driver");
+            reader = new BufferedReader(new InputStreamReader(in));
+            String line = "";
+            while ((line = reader.readLine())!= null){
+                content.append(line);
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            if(reader != null){
+                try{
+                    reader.close();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+        return content.toString();
     }
 }

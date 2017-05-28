@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
     private Button middle;
     private Button big;
 
-    private Button usecar;
     private ImageView car;
 
     private EditText startedit;
@@ -34,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         big = (Button)findViewById(R.id.main_largecar);
 
         car = (ImageView)findViewById(R.id.cariamge);
-        usecar = (Button)findViewById(R.id.main_like);
 
         user = (Button)findViewById(R.id.main_me);
         notifigation = (Button)findViewById(R.id.main_info);
@@ -83,13 +81,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        usecar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,ConfirmActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         likeuse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +92,14 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("start_data",start);
                 intent.putExtra("end_data",end);
                 intent.putExtra("price",price);
+                startActivity(intent);
+            }
+        });
+
+        notifigation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,NoticeActivity.class);
                 startActivity(intent);
             }
         });

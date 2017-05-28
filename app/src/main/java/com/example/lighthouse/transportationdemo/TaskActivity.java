@@ -36,6 +36,13 @@ public class TaskActivity extends AppCompatActivity {
         dbHelper = new MyDatabaseHelper(this,"Task.db",null,2);
 
         back = (Button)findViewById(R.id.back_task);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TaskActivity.this,UserActivity.class);
+                startActivity(intent);
+            }
+        });
         ingtask = (Button)findViewById(R.id.tasking);
         finishtask = (Button)findViewById(R.id.taskfinish);
         canceltask = (Button)findViewById(R.id.taskcancel);
@@ -83,7 +90,7 @@ public class TaskActivity extends AppCompatActivity {
                     values.put("time",a);
                     values.put("tasknumber",b);
                     values.put("taskstart",c);
-                    values.put("startend",d);
+                    values.put("taskend",d);
                     values.put("taskmaster",e);
                     db.insert("taskfinished",null,values);
                     values.clear();
@@ -95,28 +102,31 @@ public class TaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(TaskActivity.this,"Click the Button of 订单取消",Toast.LENGTH_SHORT).show();
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                if(b.equals("")){
-                    Toast.makeText(TaskActivity.this,"no tasking can cancel",Toast.LENGTH_SHORT).show();
-                }else{
-                    //删除当前订单，textview清空
-                    db.delete("tasking","tasknumber = ?",new String[]{b});
-                    task_time.setText("");
-                    task_number.setText("");
-                    task_start.setText("");
-                    task_end.setText("");
-                    task_master.setText("");
-                    //添加到taskcancel表中
+//                SQLiteDatabase db = dbHelper.getWritableDatabase();
+//                if(b.equals("")){
+//                    Toast.makeText(TaskActivity.this,"no tasking can cancel",Toast.LENGTH_SHORT).show();
+//                }else{
+//                    //删除当前订单，textview清空
+//                    db.delete("tasking","tasknumber = ?",new String[]{b});
+//                    task_time.setText("");
+//                    task_number.setText("");
+//                    task_start.setText("");
+//                    task_end.setText("");
+//                    task_master.setText("");
+//                    //添加到taskcancel表中
+//
+//                    ContentValues values = new ContentValues();
+//                    values.put("time",a);
+//                    values.put("tasknumber",b);
+//                    values.put("taskstart",c);
+//                    values.put("taskend",d);
+//                    values.put("taskmaster",e);
+//                    db.insert("taskcancel",null,values);
+//                    values.clear();
+//                }
 
-                    ContentValues values = new ContentValues();
-                    values.put("time",a);
-                    values.put("tasknumber",b);
-                    values.put("taskstart",c);
-                    values.put("startend",d);
-                    values.put("taskmaster",e);
-                    db.insert("taskcancel",null,values);
-                    values.clear();
-                }
+                Intent intent = new Intent("com.example.lighthouse.TASK_FINISHED");
+                sendBroadcast(intent);
             }
         });
 
