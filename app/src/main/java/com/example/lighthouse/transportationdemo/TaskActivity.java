@@ -72,7 +72,7 @@ public class TaskActivity extends AppCompatActivity {
         taskeditLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TaskActivity.this,"Click the Button of 订单完成",Toast.LENGTH_SHORT).show();
+                Log.d("Driver","Click the Button of left");
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
                 if(b.equals("")){
                     Toast.makeText(TaskActivity.this,"no tasking can finish",Toast.LENGTH_SHORT).show();
@@ -101,29 +101,29 @@ public class TaskActivity extends AppCompatActivity {
         taskeditRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TaskActivity.this,"Click the Button of 订单取消",Toast.LENGTH_SHORT).show();
-//                SQLiteDatabase db = dbHelper.getWritableDatabase();
-//                if(b.equals("")){
-//                    Toast.makeText(TaskActivity.this,"no tasking can cancel",Toast.LENGTH_SHORT).show();
-//                }else{
-//                    //删除当前订单，textview清空
-//                    db.delete("tasking","tasknumber = ?",new String[]{b});
-//                    task_time.setText("");
-//                    task_number.setText("");
-//                    task_start.setText("");
-//                    task_end.setText("");
-//                    task_master.setText("");
-//                    //添加到taskcancel表中
-//
-//                    ContentValues values = new ContentValues();
-//                    values.put("time",a);
-//                    values.put("tasknumber",b);
-//                    values.put("taskstart",c);
-//                    values.put("taskend",d);
-//                    values.put("taskmaster",e);
-//                    db.insert("taskcancel",null,values);
-//                    values.clear();
-//                }
+                Log.d("Driver","Click the Button of right");
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                if(b.equals("")){
+                    Toast.makeText(TaskActivity.this,"no tasking can cancel",Toast.LENGTH_SHORT).show();
+                }else{
+                    //删除当前订单，textview清空
+                    db.delete("tasking","tasknumber = ?",new String[]{b});
+                    task_time.setText("");
+                    task_number.setText("");
+                    task_start.setText("");
+                    task_end.setText("");
+                    task_master.setText("");
+
+                    //添加到taskcancel表中
+                    ContentValues values = new ContentValues();
+                    values.put("time",a);
+                    values.put("tasknumber",b);
+                    values.put("taskstart",c);
+                    values.put("taskend",d);
+                    values.put("taskmaster",e);
+                    db.insert("taskcancel",null,values);
+                    values.clear();
+                }
                 Intent intent = new Intent("com.example.lighthouse.TASK_FINISHED");
                 sendBroadcast(intent);
             }
@@ -132,7 +132,7 @@ public class TaskActivity extends AppCompatActivity {
         ingtask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TaskActivity.this,"Click the Button of 进行中",Toast.LENGTH_SHORT).show();
+                Log.d("Driver","Click the Button of 进行中");
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
                 Cursor cursor = db.query("tasking",null,null,null,null,null,null);
                 if (cursor.moveToFirst()){
@@ -156,7 +156,7 @@ public class TaskActivity extends AppCompatActivity {
         finishtask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TaskActivity.this,"Click the Button of 已完成",Toast.LENGTH_SHORT).show();
+                Log.d("Driver","Click the Button of 已完成");
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
                 Cursor cursor = db.query("taskfinished",null,null,null,null,null,null);
                 if (cursor.moveToFirst()){
@@ -180,7 +180,7 @@ public class TaskActivity extends AppCompatActivity {
         canceltask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TaskActivity.this,"Click the Button of 进行中",Toast.LENGTH_SHORT).show();
+                Log.d("Driver","Click the Button of 已取消");
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
                 Cursor cursor = db.query("taskcanceled",null,null,null,null,null,null);
                 if (cursor.moveToFirst()){

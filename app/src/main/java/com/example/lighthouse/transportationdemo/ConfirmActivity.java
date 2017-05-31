@@ -32,6 +32,7 @@ public class ConfirmActivity extends AppCompatActivity {
 
     private MyDatabaseHelper dbHelper;
     private CheckBox checkDriver;
+    private Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,14 @@ public class ConfirmActivity extends AppCompatActivity {
 
         time.setText(getTime());
 
+        back = (Button)findViewById(R.id.back_main);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ConfirmActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
         Intent intent = getIntent();
         final String confirm_start = intent.getStringExtra("start_data");
         final String confirm_end = intent.getStringExtra("end_data");
@@ -53,7 +62,8 @@ public class ConfirmActivity extends AppCompatActivity {
         taskInfo = (EditText)findViewById(R.id.attentionEdit);
         userConfirm = (EditText)findViewById(R.id.userEdit);
         phoneConfirm = (EditText)findViewById(R.id.userphone);
-        final String user  = userConfirm.getText().toString()+"("+phoneConfirm.getText().toString()+")";
+
+        final String user  = userConfirm.getText().toString();
 
         checkDriver = (CheckBox)findViewById(R.id.checkDriver);
         checkDriver.setOnClickListener(new View.OnClickListener() {
