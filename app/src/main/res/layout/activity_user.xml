@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/username"
-            android:text="15967179176"
+            android:text="zhangsan"
             android:layout_gravity="center"
             android:textColor="@color/black"/>
     </LinearLayout>

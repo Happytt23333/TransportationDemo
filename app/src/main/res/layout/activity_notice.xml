@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/notice_first"
-            android:text="我的第一条消息"
+            android:text="你的第一条消息"
             android:gravity="center"
             android:textColor="@color/black"/>
     </LinearLayout>
